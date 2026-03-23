@@ -23,7 +23,7 @@ export default function AboutPage() {
           alt=""
           fill
           priority
-          style={{ objectFit: 'cover', objectPosition: 'center', opacity: 0.15, zIndex: 0 }}
+          style={{ objectFit: 'cover', objectPosition: 'center', opacity: 0.35, zIndex: 0 }}
         />
 
         {/* Dark gradient overlay */}
@@ -31,7 +31,7 @@ export default function AboutPage() {
           className="absolute inset-0"
           style={{
             background:
-              'linear-gradient(to bottom, rgba(32,12,28,0.7) 0%, rgba(32,12,28,0.95) 100%)',
+              'linear-gradient(to bottom, rgba(32,12,28,0.4) 0%, rgba(32,12,28,0.75) 100%)',
             zIndex: 1,
           }}
         />

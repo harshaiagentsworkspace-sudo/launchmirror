@@ -1,3 +1,4 @@
+import Image from 'next/image'
 import Link from 'next/link'
 import Navbar from '@/components/Navbar'
 import { ArrowRight } from 'lucide-react'
@@ -14,13 +15,39 @@ export default function AboutPage() {
 
       {/* ——— HERO ——— */}
       <section
-        className="pt-32 pb-16 md:pb-24 px-6 lg:px-20 text-center"
-        style={{
-          background:
-            'radial-gradient(ellipse at 50% 30%, rgba(124,58,237,0.35) 0%, transparent 65%), #200c1c',
-        }}
+        className="pt-32 pb-16 md:pb-24 px-6 lg:px-20 text-center relative overflow-hidden"
       >
-        <div className="max-w-3xl mx-auto flex flex-col items-center gap-5">
+        {/* Background image — very subtle */}
+        <Image
+          src="https://images.unsplash.com/photo-1522202176988-66273c2fd55f?w=1920&q=80"
+          alt=""
+          fill
+          priority
+          style={{ objectFit: 'cover', objectPosition: 'center', opacity: 0.15, zIndex: 0 }}
+        />
+
+        {/* Dark gradient overlay */}
+        <div
+          className="absolute inset-0"
+          style={{
+            background:
+              'linear-gradient(to bottom, rgba(32,12,28,0.7) 0%, rgba(32,12,28,0.95) 100%)',
+            zIndex: 1,
+          }}
+        />
+
+        {/* Purple radial glow */}
+        <div
+          className="absolute inset-0"
+          style={{
+            background:
+              'radial-gradient(ellipse at 50% 30%, rgba(124,58,237,0.35) 0%, transparent 65%)',
+            zIndex: 1,
+          }}
+        />
+
+        {/* Content */}
+        <div className="relative max-w-3xl mx-auto flex flex-col items-center gap-5" style={{ zIndex: 2 }}>
           <span
             className="inline-block text-xs font-bold text-[#7c3aed] tracking-[0.15em] uppercase px-4 py-1.5 rounded-full"
             style={{ background: 'rgba(124,58,237,0.1)', fontFamily: 'var(--font-display)' }}

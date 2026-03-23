@@ -21,7 +21,7 @@ export default function LandingPage() {
 
       {/* ——— HERO ——— */}
       <section
-        className="relative min-h-screen flex items-center pt-20"
+        className="relative min-h-screen flex items-center pt-16 md:pt-20"
         style={{
           background:
             'radial-gradient(ellipse at 30% 50%, rgba(124,58,237,0.5) 0%, transparent 65%), radial-gradient(ellipse at 80% 40%, rgba(124,58,237,0.35) 0%, transparent 55%), #200c1c',
@@ -37,7 +37,7 @@ export default function LandingPage() {
           }}
         />
 
-        <div className="relative z-10 w-full max-w-7xl mx-auto px-6 lg:px-20 py-20">
+        <div className="relative z-10 w-full max-w-7xl mx-auto px-6 lg:px-20 py-10 md:py-20">
           <div className="grid lg:grid-cols-2 gap-16 items-center">
             {/* Left */}
             <div className="flex flex-col gap-7">
@@ -59,7 +59,7 @@ export default function LandingPage() {
 
               {/* Headline */}
               <h1
-                className="text-5xl lg:text-[3.5rem] font-extrabold leading-[1.1] tracking-[-0.02em] text-[#fdd8ef]"
+                className="text-3xl md:text-5xl lg:text-[3.5rem] font-extrabold leading-[1.1] tracking-[-0.02em] text-[#fdd8ef]"
                 style={{ fontFamily: 'var(--font-display)' }}
               >
                 See The{' '}
@@ -125,9 +125,9 @@ export default function LandingPage() {
             </div>
 
             {/* Right — Preview Card */}
-            <div className="hidden lg:flex justify-center">
+            <div className="flex justify-center lg:justify-center mt-4 md:mt-0">
               <div
-                className="relative w-full max-w-md rounded-2xl p-6"
+                className="relative w-full max-w-sm md:max-w-md rounded-2xl p-4 md:p-6"
                 style={{
                   background: 'rgba(69,45,63,0.6)',
                   backdropFilter: 'blur(12px)',
@@ -152,9 +152,9 @@ export default function LandingPage() {
                 </p>
 
                 {/* Score ring — static preview */}
-                <div className="flex flex-col items-center mb-6">
+                <div className="flex flex-col items-center mb-4">
                   <div className="relative">
-                    <svg width="120" height="120" viewBox="0 0 200 200" fill="none">
+                    <svg width="90" height="90" viewBox="0 0 200 200" fill="none" className="md:w-[120px] md:h-[120px]">
                       <circle cx="100" cy="100" r="80" stroke="#2a1425" strokeWidth="12" fill="none" />
                       <circle
                         cx="100"
@@ -182,7 +182,7 @@ export default function LandingPage() {
                 </div>
 
                 {/* Truth cards */}
-                <div className="flex flex-col gap-2 mb-4">
+                <div className="flex flex-col gap-2 mb-3">
                   <div className="flex items-start gap-2 p-3 rounded-xl" style={{ background: '#2a1425', borderLeft: '3px solid #4edea3' }}>
                     <span className="text-[#4edea3] text-xs font-semibold" style={{ fontFamily: 'var(--font-body)' }}>✓ Strong market timing in India</span>
                   </div>
@@ -213,7 +213,7 @@ export default function LandingPage() {
       {/* ——— HOW IT WORKS ——— */}
       <section
         id="how-it-works"
-        className="py-24 px-6 lg:px-20"
+        className="py-12 md:py-24 px-6 lg:px-20"
         style={{
           background:
             'radial-gradient(ellipse at 50% 50%, rgba(124,58,237,0.1) 0%, transparent 65%), #200c1c',
@@ -235,7 +235,7 @@ export default function LandingPage() {
             </h2>
           </div>
 
-          <div className="grid md:grid-cols-3 gap-6 relative">
+          <div className="grid md:grid-cols-3 gap-4 md:gap-6 relative">
             {[
               {
                 num: '01',
@@ -258,7 +258,7 @@ export default function LandingPage() {
             ].map((step, idx) => (
               <div key={step.num} className="relative">
                 <div
-                  className="rounded-2xl p-8 h-full"
+                  className="rounded-2xl p-5 md:p-8 h-full"
                   style={{
                     background: '#2a1425',
                     boxShadow: '0 10px 30px -10px rgba(124,58,237,0.2)',
@@ -293,7 +293,7 @@ export default function LandingPage() {
       </section>
 
       {/* ——— WHAT YOU GET ——— */}
-      <section className="py-24 px-6 lg:px-20 bg-[#200c1c]">
+      <section className="py-12 md:py-24 px-6 lg:px-20 bg-[#200c1c]">
         <div className="max-w-6xl mx-auto">
           <div className="text-center mb-14">
             <span
@@ -313,7 +313,7 @@ export default function LandingPage() {
             </p>
           </div>
 
-          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-5">
+          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-3 md:gap-5">
             {[
               { Icon: BarChart2, title: 'Viability Score', desc: 'A 0–100 score from market size, competition, and timing.' },
               { Icon: TrendingUp, title: 'Market Pulse', desc: 'Real-time data on your niche in India right now.' },
@@ -358,7 +358,7 @@ export default function LandingPage() {
 
       {/* ——— SAMPLE PREVIEW CTA ——— */}
       <section
-        className="py-24 px-6 lg:px-20"
+        className="py-12 md:py-24 px-6 lg:px-20"
         style={{ background: '#2a1425' }}
       >
         <div className="max-w-4xl mx-auto">
@@ -377,16 +377,35 @@ export default function LandingPage() {
           {/* Blurred preview */}
           <div className="relative rounded-2xl overflow-hidden" style={{ boxShadow: '0 10px 30px -10px rgba(124,58,237,0.3)' }}>
             <div
-              className="p-8 blur-sm pointer-events-none select-none"
+              className="p-6 md:p-8 blur-sm pointer-events-none select-none"
               style={{ background: '#200c1c' }}
             >
-              <div className="grid grid-cols-3 gap-4 mb-4">
+              {/* Desktop placeholder blocks */}
+              <div className="hidden md:grid grid-cols-3 gap-4 mb-4">
                 <div className="h-24 rounded-xl bg-[#2a1425]" />
                 <div className="h-24 rounded-xl bg-[#2a1425]" />
                 <div className="h-24 rounded-xl bg-[#2a1425]" />
               </div>
-              <div className="h-32 rounded-xl bg-[#2a1425] mb-4" />
-              <div className="h-20 rounded-xl bg-[#2a1425]" />
+              <div className="hidden md:block h-32 rounded-xl bg-[#2a1425] mb-4" />
+              <div className="hidden md:block h-20 rounded-xl bg-[#2a1425]" />
+              {/* Mobile preview content */}
+              <div className="flex flex-col items-center gap-3 md:hidden">
+                <div className="flex flex-col items-center">
+                  <svg width="80" height="80" viewBox="0 0 200 200" fill="none">
+                    <circle cx="100" cy="100" r="80" stroke="#2a1425" strokeWidth="12" fill="none" />
+                    <circle cx="100" cy="100" r="80" stroke="#4edea3" strokeWidth="12" fill="none" strokeLinecap="round" strokeDasharray={502.65} strokeDashoffset={502.65 * (1 - 0.72)} style={{ transformOrigin: '100px 100px', transform: 'rotate(-90deg)', filter: 'drop-shadow(0 0 8px rgba(78,222,163,0.5))' }} />
+                    <text x="85" y="108" textAnchor="end" fontSize="44" fontWeight="700" fill="#fdd8ef" fontFamily="sans-serif">72</text>
+                    <text x="108" y="108" textAnchor="start" fontSize="18" fill="#ccc3d8" fontFamily="sans-serif">/100</text>
+                  </svg>
+                  <p className="text-xs text-[#ccc3d8] mt-1" style={{ fontFamily: 'var(--font-body)' }}>Viability Score</p>
+                </div>
+                <div className="w-full p-3 rounded-xl" style={{ background: '#2a1425', borderLeft: '3px solid #4edea3' }}>
+                  <span className="text-[#4edea3] text-xs font-semibold">✓ Strong market timing in India</span>
+                </div>
+                <div className="w-full p-3 rounded-xl" style={{ background: '#2a1425', borderLeft: '3px solid #ffb4ab' }}>
+                  <span className="text-[#ffb4ab] text-xs font-semibold">✕ Underfunded for this category</span>
+                </div>
+              </div>
             </div>
             {/* Overlay */}
             <div

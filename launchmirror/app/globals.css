@@ -1,0 +1,57 @@
+@import "tailwindcss";
+
+:root {
+  --font-display: 'Plus Jakarta Sans', sans-serif;
+  --font-body: 'Inter', sans-serif;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  background-color: #200c1c;
+  color: #ccc3d8;
+  font-family: var(--font-body);
+}
+
+h1, h2, h3, h4, h5, h6 {
+  font-family: var(--font-display);
+  color: #fdd8ef;
+}
+
+.font-display {
+  font-family: var(--font-display);
+}
+
+.font-body {
+  font-family: var(--font-body);
+}
+
+/* Gradient text utility */
+.gradient-text {
+  background: linear-gradient(to right, #7c3aed, #a78bfa);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+/* Ambient shadow utility */
+.ambient-shadow {
+  box-shadow: 0 10px 30px -10px rgba(124, 58, 237, 0.2);
+}
+
+/* Progress bar animation */
+@keyframes growWidth {
+  from { width: 0%; }
+  to { width: var(--target-width); }
+}
+
+/* Reduced motion */
+@media (prefers-reduced-motion: reduce) {
+  * {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}

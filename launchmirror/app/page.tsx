@@ -1,7 +1,9 @@
 'use client'
 
+import { useEffect, useState } from 'react'
 import Link from 'next/link'
 import Navbar from '@/components/Navbar'
+import { motion, useMotionValue, useTransform, animate } from 'framer-motion'
 import {
   BarChart2,
   TrendingUp,
@@ -15,6 +17,27 @@ import {
 } from 'lucide-react'
 
 export default function LandingPage() {
+  const [count, setCount] = useState(0)
+  const motionCount = useMotionValue(0)
+  const rounded = useTransform(motionCount, (v) => Math.floor(v))
+
+  useEffect(() => {
+    fetch('/api/count')
+      .then((r) => r.json())
+      .then((d) => {
+        const total = typeof d.count === 'number' ? d.count : 0
+        setCount(total)
+        const controls = animate(motionCount, total, { duration: 1.8, ease: 'easeOut' })
+        return controls.stop
+      })
+      .catch(() => {})
+  // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [])
+
+  function formatCount(n: number): string {
+    if (n >= 1000) return `${(n / 1000).toFixed(1)}K+`
+    return n.toString()
+  }
   return (
     <div className="min-h-screen bg-[#200c1c] overflow-x-hidden">
       <Navbar />
@@ -122,6 +145,29 @@ export default function LandingPage() {
                   </span>
                 ))}
               </div>
+
+              {/* Live counter */}
+              {count > 0 && (
+                <div
+                  className="self-start flex items-center gap-2 px-3.5 py-2 rounded-full"
+                  style={{
+                    background: '#2a1425',
+                    border: '1px solid rgba(74,68,85,0.2)',
+                    fontFamily: 'var(--font-body)',
+                  }}
+                >
+                  <span className="text-sm">🔍</span>
+                  <span className="text-xs text-[#ccc3d8]">
+                    <motion.span
+                      className="font-bold"
+                      style={{ color: '#7c3aed' }}
+                    >
+                      {rounded}
+                    </motion.span>
+                    {' '}business {count === 1 ? 'idea' : 'ideas'} analyzed so far
+                  </span>
+                </div>
+              )}
             </div>
 
             {/* Right — Preview Card */}

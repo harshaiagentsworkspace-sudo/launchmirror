@@ -1,6 +1,7 @@
 import { NextResponse } from 'next/server'
 import { getNvidiaClient } from '@/lib/nvidia'
 import { buildMirrorPrompt, MIRROR_SYSTEM_PROMPT } from '@/lib/prompts'
+import { incrementAnalysisCount } from '@/lib/db'
 
 export const dynamic = 'force-dynamic'
 import type { FormData, MirrorOutput, SearchResult } from '@/types'
@@ -59,6 +60,13 @@ export async function POST(request: Request) {
 
     if (!validateMirrorOutput(parsed)) {
       throw new Error('AI response missing required fields')
+    }
+
+    // Log to DB — fire and forget, never blocks the response
+    try {
+      await incrementAnalysisCount(formData.businessType, formData.currentStage)
+    } catch {
+      // DB failure silently ignored
     }
 
     return NextResponse.json(parsed)

@@ -4,6 +4,7 @@ import { useState } from 'react'
 import { useRouter } from 'next/navigation'
 import Navbar from '@/components/Navbar'
 import LoadingState from '@/components/LoadingState'
+import EmailCapture from '@/components/EmailCapture'
 import { useAnalysis } from '@/lib/context'
 import type { FormData, MirrorOutput } from '@/types'
 
@@ -45,6 +46,7 @@ export default function AnalyzePage() {
   const router = useRouter()
   const { setFormData, setMirrorOutput } = useAnalysis()
   const [loading, setLoading] = useState(false)
+  const [showEmailCapture, setShowEmailCapture] = useState(false)
   const [errors, setErrors] = useState<Errors>({})
   const [charCount, setCharCount] = useState(0)
   const [focusedField, setFocusedField] = useState<string | null>(null)
@@ -72,12 +74,8 @@ export default function AnalyzePage() {
     return Object.keys(e).length === 0
   }
 
-  async function handleSubmit(e: React.FormEvent) {
-    e.preventDefault()
-    if (!validate()) return
-
-    const validForm = form as FormData
-    setFormData(validForm)
+  async function runAnalysis(validForm: FormData) {
+    setShowEmailCapture(false)
     setLoading(true)
     setErrors({})
 
@@ -111,6 +109,14 @@ export default function AnalyzePage() {
     }
   }
 
+  async function handleSubmit(e: React.FormEvent) {
+    e.preventDefault()
+    if (!validate()) return
+    const validForm = form as FormData
+    setFormData(validForm)
+    setShowEmailCapture(true)
+  }
+
   function getFocusStyle(field: string) {
     return focusedField === field
       ? { ...inputBase, borderColor: '#7c3aed', boxShadow: '0 0 0 4px rgba(124,58,237,0.15)' }
@@ -119,6 +125,9 @@ export default function AnalyzePage() {
 
   return (
     <div className="min-h-screen bg-[#200c1c]">
+      {showEmailCapture && (
+        <EmailCapture onSuccess={() => runAnalysis(form as FormData)} />
+      )}
       {loading && <LoadingState />}
       <Navbar />
 
